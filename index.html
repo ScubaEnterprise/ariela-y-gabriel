@@ -9,7 +9,6 @@
 <meta property="og:description" content="Sábado 24 de octubre de 2026 · י״ד בחשוון תשפ״ז">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://ariela-y-gabriel.vercel.app/assets/dance-bw.jpg">
-<meta name="apple-itunes-app" content="app-id=1585857307">
 <meta name="theme-color" content="#F2EFE8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232B2E11'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='28' fill='%23F2EFE8' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -346,14 +345,6 @@
     justify-content:center;
     margin-bottom:.3rem;
   }
-  .gift-open{margin-top:1rem;text-align:center}
-  .gift-open-btn{margin-top:0;cursor:pointer}
-  .gift-open-note{
-    margin-top:.7rem;
-    font-style:italic;
-    font-size:.82rem;
-    color:var(--rust);
-  }
   .copy-btn.copied{background:var(--olive-deep);color:var(--card);border-color:var(--olive-deep)}
   .gift-disclaimer{
     margin-top:1.8rem;
@@ -520,10 +511,6 @@
         <div class="gift-yappy-actions">
           <button class="copy-btn" type="button" data-copy="gift-yappy">Copiar</button>
         </div>
-        <div class="gift-open" id="gift-open" hidden>
-          <button class="btn gift-open-btn" id="yappy-open" type="button">Abrir Yappy</button>
-          <p class="gift-open-note" id="yappy-open-note">Copiaremos nuestro número para que lo pegues en el app.</p>
-        </div>
         <div class="gift-sep" aria-hidden="true"></div>
         <div class="gift-group-head">Transferencia ACH</div>
         <div class="gift-row">
@@ -598,32 +585,6 @@
       }
     });
   });
-
-  // "Abrir Yappy" — solo en celulares
-  (function(){
-    var ua = navigator.userAgent || '';
-    var isIOS = /iPhone|iPad|iPod/.test(ua);
-    var isAndroid = /Android/.test(ua);
-    if (!isIOS && !isAndroid) return;
-    var wrap = document.getElementById('gift-open');
-    wrap.hidden = false;
-    document.getElementById('yappy-open').addEventListener('click', function(){
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('69490460');
-      } catch(e){}
-      document.getElementById('yappy-open-note').textContent = 'Número copiado — pégalo en Yappy.';
-      if (isAndroid) {
-        window.location.href = 'intent://send#Intent;scheme=yappy;package=com.yappy;S.browser_fallback_url=' +
-          encodeURIComponent('https://play.google.com/store/apps/details?id=com.yappy') + ';end';
-      } else {
-        var t = setTimeout(function(){
-          if (!document.hidden) window.location.href = 'https://apps.apple.com/pa/app/yappy/id1585857307';
-        }, 1600);
-        window.addEventListener('pagehide', function(){ clearTimeout(t); }, {once:true});
-        window.location.href = 'yappy://';
-      }
-    });
-  })();
 
   // Scroll reveal
   (function(){
